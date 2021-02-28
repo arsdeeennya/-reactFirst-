@@ -31,7 +31,7 @@ const DrfApiFetch = () => {
 				"Authorization": "Token fc58235d50a4ca9d84555db4450a9d877ce2cedc"
 			}
 		})
-		.then(res => console.log(res))
+		.then(res => {setTasks(tasks.filter(task => task.id !== id)); setSelectedTask([])})
 	}
 	
 	return (
@@ -53,7 +53,7 @@ const DrfApiFetch = () => {
 			<button type="button" onClick={()=>getTask()}>Get task</button>
 			<br/>
 			<button type="button" onClick={()=>deleteTask()}>delete task</button>
-			{/* <h3>{selectedTask.title} {selectedTask.id}</h3> */}
+			<h3>{selectedTask.title} {selectedTask.id}</h3>
 		</div>
 	)
 }
