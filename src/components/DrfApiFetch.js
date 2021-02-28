@@ -10,7 +10,7 @@ const DrfApiFetch = () => {
 	useEffect(() => {
 		axios.get('http://127.0.0.1:8000/api/tasks/', {
 			headers: {
-				"Authorization": "Token xxxxxxxxxxx"
+				"Authorization": "Token fc58235d50a4ca9d84555db4450a9d877ce2cedc"
 			}
 		})
 		.then(res => {setTasks(res.data)})
@@ -19,16 +19,16 @@ const DrfApiFetch = () => {
 	const getTask = () => {
 		axios.get(`http://127.0.0.1:8000/api/tasks/${id}/`, {
 			headers: {
-				"Authorization": "Token xxxxxxxxxxx"
+				"Authorization": "Token fc58235d50a4ca9d84555db4450a9d877ce2cedc"
 			}
 		})
-		.then(res => {setSelectedTask(res.data)
-	})}
+		.then(res => {setSelectedTask(res.data)})
+	}
 	
 	const deleteTask = () => {
 		axios.delete(`http://127.0.0.1:8000/api/tasks/${id}/`, {
 			headers: {
-				"Authorization": "Token xxxxxxxxxxx"
+				"Authorization": "Token fc58235d50a4ca9d84555db4450a9d877ce2cedc"
 			}
 		})
 		.then(res => console.log(res))
