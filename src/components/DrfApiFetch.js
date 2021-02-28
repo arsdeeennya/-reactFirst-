@@ -49,6 +49,16 @@ const DrfApiFetch = () => {
 		.then(res => setTasks([...tasks, res.data]))
 	}
 	
+	const editTask = (task) => {
+		axios.put(`http://127.0.0.1:8000/api/tasks/${task.id}`, task,{
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": "Token fc58235d50a4ca9d84555db4450a9d877ce2cedc"
+			}
+		})
+		.then(res => {setTasks(tasks.map(task => (task.id === editedTask.id ? res.data : task))); setEditedTask({id:"", title:""})})
+	}
+	
 	const handleInputChange = () => evt => {
 		const value = evt.target.value
 		const name = evt.target.name
@@ -63,6 +73,9 @@ const DrfApiFetch = () => {
 						<button onClick={() => deleteTask(task.id)}>
 							<i className="fas fa-trash-alt"></i>
 						</button>
+						<button onClick={() => setEditedTask(task)}>
+							<i className="fas fa-pen"></i>
+						</button>
 					</li>)
 				}
 			</ul>
@@ -76,7 +89,7 @@ const DrfApiFetch = () => {
 			<button type="button" onClick={()=>deleteTask()}>delete task</button>
 			<h3>{selectedTask.title} {selectedTask.id}</h3>
 			<input type="text" name="title" value={editedTask.title} onChange={handleInputChange()} placeholder="New task?" required/>
-			<button onClick={() => newTask(editedTask)}>create</button>
+			{ editedTask.id ? <button onClick={() => editTask(editedTask)}>update</button> : <button onClick={() => newTask(editedTask)}>create</button>}
 		</div>
 	)
 }
