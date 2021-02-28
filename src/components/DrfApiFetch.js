@@ -49,7 +49,7 @@ const DrfApiFetch = () => {
 			<button type="button" onClick={()=>getTask()}>Get task</button>
 			<br/>
 			<button type="button" onClick={()=>deleteTask()}>delete task</button>
-			<h3>{setSelectedTask.title} {setSelectedTask.id}</h3>
+			<h3>{selectedTask.title} {selectedTask.id}</h3>
 		</div>
 	)
 }
